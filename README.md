@@ -1,6 +1,6 @@
 # Graph User Profile Console app
 
-## Description
+### Description
  Gets a specified attributes of a signed in users profile.
 
 1. DisplayName
