@@ -1,4 +1,4 @@
-# GraphUserProfile
+# Graph User Profile Console app
 
 ## Description
 
