@@ -3,7 +3,7 @@
 ## Description
 
 
-### Gets a specified attributes of a signed in users profile information.
+### Gets a specified attributes of a signed in users profile.
 
 1. DisplayName
 2. Email
