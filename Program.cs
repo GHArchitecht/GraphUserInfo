@@ -11,7 +11,7 @@ int choice = -1;
 while (choice != 0)
 {
     Console.WriteLine("Please choose one of the following options:");
-    Console.WriteLine("1. Display User Profile");
+    Console.WriteLine("1. Display my Profile information");
     Console.WriteLine("0. Exit");
 
     try
@@ -31,7 +31,7 @@ while (choice != 0)
             Console.WriteLine("Goodbye...");
             break;
         case 1:
-            await GreetUserAsync();
+            await GetUserProfileAsync();
             break;
         default:
             Console.WriteLine("Invalid choice! Please try again.");
@@ -53,27 +53,28 @@ void InitializeGraph(Settings settings)
         });
 }
 
-async Task GreetUserAsync()
+async Task GetUserProfileAsync()
 {
     try
     {
         var user = await GraphHelper.GetUserAsync();
         Console.WriteLine($"\n");
         Console.WriteLine($"Name: {user?.DisplayName}");
-        // For Work/school accounts, email is in Mail property
-        // Personal accounts, email is in UserPrincipalName
         Console.WriteLine($"Email: {user?.Mail ?? user?.UserPrincipalName ?? ""}");
         Console.WriteLine($"Job Title: {user?.JobTitle}");
         Console.WriteLine($"Department: {user?.Department}");
         Console.WriteLine($"Email: {user?.Country}");
         Console.WriteLine($"User Type: {user?.UserType}");
         Console.WriteLine($"Account Created on: {user?.CreatedDateTime}");
-        Console.WriteLine($"Account Created on: {user?.Manager}");
+        Console.WriteLine($"Account Enabled: {user?.AccountEnabled}");
+        Console.WriteLine($"Password Last Set: {user?.LastPasswordChangeDateTime}");
         Console.WriteLine($"\n");
     }
     catch (Exception ex)
     {
         Console.WriteLine($"Error getting user: {ex.Message}");
     }
+ 
+    
 }
 

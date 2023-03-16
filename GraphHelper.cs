@@ -10,7 +10,7 @@ class GraphHelper
 	private static DeviceCodeCredential? _deviceCodeCredential;
 	// Client configured with user authentication
 	private static GraphServiceClient? _userClient;
-    private static IAuthenticationProvider requestAdapter;
+
 
     public static void InitializeGraphForUserAuth(Settings settings,
 		Func<DeviceCodeInfo, CancellationToken, Task> deviceCodePrompt)
@@ -57,8 +57,12 @@ class GraphHelper
                 u.JobTitle,
                 u.UserType,
                 u.CreatedDateTime,
+				u.AccountEnabled,
+				u.LastPasswordChangeDateTime,
                 u.Manager
 			})
             .GetAsync();
 	}
+
+
 }
